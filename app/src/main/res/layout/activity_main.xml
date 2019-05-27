@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="212dp"
+            android:layout_height="189dp"
+            tools:srcCompat="@tools:sample/avatars[3]" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="54dp" />
+
+        <EditText
+            android:id="@+id/editText_Correo"
+            android:layout_width="337dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:ems="10"
+            android:inputType="textEmailAddress" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="32dp" />
+
+        <EditText
+            android:id="@+id/editText_password"
+            android:layout_width="339dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:ems="10"
+            android:inputType="textPassword" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="32dp" />
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="343dp"
+            android:layout_height="56dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="Ingresar" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="32dp" />
+
+        <TextView
+            android:layout_gravity="center"
+            android:id="@+id/textView"
+            android:layout_width="206dp"
+            android:layout_height="23dp"
+            android:text="¿No posee una cuenta?" />
+
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="32dp" />
+
+        <Button
+            android:id="@+id/btn_registrarse"
+            android:layout_width="341dp"
+            android:layout_height="53dp"
+            android:text="Registrarse" />
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
