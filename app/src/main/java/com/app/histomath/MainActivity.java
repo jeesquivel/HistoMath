@@ -1,6 +1,7 @@
 package com.app.histomath;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -60,6 +61,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void registrarUsuario(){
+        Intent intent = new Intent(getApplication(),RegistroActivity.class);
+        startActivity(intent);
 
     }
 
