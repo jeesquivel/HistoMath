@@ -21,9 +21,9 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText editTextCorreo;
     private EditText editTextPasword;
-    private ProgressDialog progressDialog;
 
     private FirebaseAuth mAuth;
+    private String nombre;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,14 +33,11 @@ public class MainActivity extends AppCompatActivity {
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
 
-
-
         Button btn_registrar = findViewById(R.id.btn_registrarse);
         Button btn_login = findViewById(R.id.btn_login);
         editTextCorreo= findViewById(R.id.editText_Correo);
         editTextPasword= findViewById(R.id.editText_password);
 
-        progressDialog = new ProgressDialog(this);
 
         btn_registrar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,8 +76,6 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        progressDialog.setMessage("Registrando el usuario...");
-        progressDialog.show();
 
 
         mAuth.signInWithEmailAndPassword(correo, password)
@@ -88,21 +83,24 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(MainActivity.this,"Hola",Toast.LENGTH_LONG).show();
+                            Toast.makeText(MainActivity.this,"Bienvenido",Toast.LENGTH_LONG).show();
+                            nombre=task.getResult().getAdditionalUserInfo().getUsername();
+                            gotoInicio();
                         } else {
                             if (task.getException() instanceof FirebaseNoSignedInUserException){
-                                Toast.makeText(MainActivity.this,"no se pudo iniciar sesión",Toast.LENGTH_LONG).show();
+                                Toast.makeText(MainActivity.this,"No se pudo iniciar sesión",Toast.LENGTH_LONG).show();
 
                             }else{
                                 Toast.makeText(MainActivity.this,"Usuario no existe",Toast.LENGTH_LONG).show();
-
                             }
                         }
-
                         // ...
                     }
                 });
-
     }
 
+    public void gotoInicio(){
+        Intent intent = new Intent(getApplication(),PrincipalActivity.class);
+        startActivity(intent);
+    }
 }

@@ -1,6 +1,7 @@
 package com.app.histomath;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -92,6 +93,7 @@ public class RegistroActivity extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()){
                                         Toast.makeText(RegistroActivity.this,"Usuario Registrado",Toast.LENGTH_LONG).show();
+                                        gotoInicio();
 
                                     }else{
                                         Toast.makeText(RegistroActivity.this,"Error",Toast.LENGTH_LONG).show();
@@ -116,6 +118,12 @@ public class RegistroActivity extends AppCompatActivity {
                         // ...
                     }
                 });
+        progressDialog.dismiss();
+    }
+
+    public void gotoInicio(){
+        Intent intent = new Intent(getApplication(),PrincipalActivity.class);
+        startActivity(intent);
     }
 
 }
