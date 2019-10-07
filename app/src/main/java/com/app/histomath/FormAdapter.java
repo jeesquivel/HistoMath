@@ -2,6 +2,7 @@ package com.app.histomath;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,15 +20,26 @@ import it.sephiroth.android.library.picasso.Picasso;
 
 public class FormAdapter extends RecyclerView.Adapter <FormAdapter.ViewHolder> {
     private List<Matematicos> dataset;
-    private List<String> mDataKey;
     Context context;
+    private OnItemClickListener mListener;
 
-    public FormAdapter(List<Matematicos> dataset, List<String> mDataKey, Context activity) {
+
+    public FormAdapter(List<Matematicos> dataset, Context activity) {
         this.dataset =dataset;
-        this.mDataKey=mDataKey;
         this.context=activity;
 
     }
+
+
+    public interface OnItemClickListener {
+        void onItemClick(int position);
+    }
+
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.mListener = listener;
+    }
+
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -69,6 +81,7 @@ public class FormAdapter extends RecyclerView.Adapter <FormAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView nombre,fNacimiento,fMuerte;
         private ImageView imagen;
+
         public ViewHolder(View view) {
             super(view);
             nombre = (TextView) view.findViewById(R.id.textView_nombre_item);
@@ -80,8 +93,8 @@ public class FormAdapter extends RecyclerView.Adapter <FormAdapter.ViewHolder> {
 
         @Override
         public void onClick(View v) {
-            //Intent intent = new Intent(context,FormAdapter.class);
-            //context.startActivity(intent);
+           //mListener.onItemClick();
+
         }
     }
 }
